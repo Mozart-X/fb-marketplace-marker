@@ -16,4 +16,4 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - Popup dashboard with live counts and one-click Clear / Unhide / Reset.
 - 100% local storage; no network calls, no tracking.
 
-[1.0.0]: https://github.com/Mozart-X/fbmarketplace/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.0.0

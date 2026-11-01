@@ -20,7 +20,7 @@ Everything is stored locally in `chrome.storage.local`. See [PRIVACY.md](PRIVACY
 
 ## Install (unpacked)
 
-1. [Download / clone](https://github.com/Mozart-X/fbmarketplace) this repo.
+1. [Download / clone](https://github.com/Mozart-X/fb-marketplace-marker) this repo.
 2. Open `chrome://extensions`.
 3. Turn on **Developer mode** (top-right).
 4. Click **Load unpacked** and select the project folder.
