@@ -47,6 +47,47 @@ $('keywords').oninput = e => {
   const list = e.target.value.split('\n').map(s => s.trim().toLowerCase()).filter(Boolean);
   set({ keywords: list });
 };
+function flash(msg) {
+  const n = $('note'); n.textContent = msg;
+  clearTimeout(flash._t); flash._t = setTimeout(() => { n.textContent = ''; }, 3500);
+}
+
+$('export').onclick = () => {
+  chrome.storage.local.get(null, data => {
+    const payload = { app: 'marketplace-tidy', version: 1, exported: new Date().toISOString(), data };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'marketplace-tidy-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    flash('Backup downloaded.');
+  });
+};
+
+$('import').onclick = () => $('importFile').click();
+$('importFile').onchange = e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      const data = (parsed && parsed.data && typeof parsed.data === 'object') ? parsed.data
+                 : (parsed && typeof parsed === 'object') ? parsed : null;
+      if (!data || Array.isArray(data)) throw new Error('shape');
+      const clean = { ...defaults };
+      for (const k of Object.keys(defaults)) if (k in data) clean[k] = data[k];
+      chrome.storage.local.set(clean, () => { S = { ...defaults, ...clean }; render(); flash('Backup imported.'); });
+    } catch (_) {
+      flash('Not a valid Marketplace Tidy backup.');
+    }
+    e.target.value = '';
+  };
+  reader.readAsText(file);
+};
+
 $('clearMarks').onclick = () => { set({ marked: {}, messaged: {} }); render(); };
 $('unhide').onclick     = () => { set({ hiddenItems: {} }); render(); };
 $('clearSeen').onclick  = () => { set({ seenItems: {} }); render(); };

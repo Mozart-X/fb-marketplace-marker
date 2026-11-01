@@ -3,6 +3,13 @@
 All notable changes to Marketplace Tidy are documented here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.0] — 2026-11-02
+
+### Added
+- Toolbar icons (16/48/128).
+- **Export / Import backup** — save all settings, hides, marks and seen history to a
+  JSON file and restore them on another browser or after a reset.
+
 ## [1.0.0] — 2026-11-01
 
 ### Added
@@ -16,4 +23,5 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - Popup dashboard with live counts and one-click Clear / Unhide / Reset.
 - 100% local storage; no network calls, no tracking.
 
+[1.1.0]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.0.0

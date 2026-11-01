@@ -45,6 +45,9 @@
   .actions { display:flex; flex-direction:column; gap:6px; margin-top: 10px; }
   .actions button { border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:8px; padding:7px; cursor:pointer; font: inherit; }
   .actions button.danger { color: var(--danger); }
+  .pair { display: flex; gap: 6px; }
+  .pair button { flex: 1; }
+  .note { font-size: 11px; color: var(--sub); margin-top: 8px; min-height: 14px; }
   hr { border:none; border-top:1px solid var(--line); margin: 12px 0; }
   .sec { font-weight:600; margin: 4px 0; }
 </style>
@@ -82,11 +85,17 @@
   <div class="sellers" id="sellers"></div>
 
   <div class="actions">
+    <div class="pair">
+      <button id="export">Export backup</button>
+      <button id="import">Import backup</button>
+    </div>
     <button id="clearMarks">Clear marks &amp; messaged tags</button>
     <button id="unhide">Unhide all listings</button>
     <button id="clearSeen">Clear seen history</button>
     <button id="reset" class="danger">Reset everything</button>
   </div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden>
+  <div id="note" class="note"></div>
 
   <script src="popup.js"></script>
 </body>
