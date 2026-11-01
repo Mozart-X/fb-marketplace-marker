@@ -1,0 +1,109 @@
+/* Marketplace Tidy — injected UI. Scoped to .fbm-* so it never touches FB's own styles. */
+
+.fbm-card { position: relative !important; }
+
+.fbm-hidden { display: none !important; }
+
+.fbm-dim { opacity: .34 !important; transition: opacity .15s ease; }
+.fbm-dim:hover { opacity: 1 !important; }
+
+/* corner badge (Marked / Messaged / Seen) */
+.fbm-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 49;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font: 700 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: .02em;
+  color: #fff;
+  pointer-events: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.fbm-marked   { background: #e02d2d; }
+.fbm-messaged { background: #e08b00; }
+.fbm-seen     { background: rgba(20, 20, 20, .72); }
+
+/* hover control bar */
+.fbm-ctrl {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: none;
+  gap: 5px;
+  z-index: 50;
+  pointer-events: auto;
+}
+.fbm-card:hover > .fbm-ctrl,
+.fbm-card:hover .fbm-ctrl { display: flex; }
+
+.fbm-btn {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, .78);
+  color: #fff;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .12s ease, transform .12s ease;
+}
+.fbm-btn:hover { background: rgba(0, 0, 0, .92); transform: scale(1.08); }
+.fbm-eye  { opacity: .85; }
+.fbm-eye.fbm-on  { background: #2d7d46; opacity: 1; }
+.fbm-flag.fbm-on { background: #e02d2d; }
+
+/* seller pill on an item page */
+#fbm-seller-pill {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483000;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #b3261e;
+  color: #fff;
+  font: 600 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
+  transition: background .12s ease, transform .12s ease;
+}
+#fbm-seller-pill:hover { transform: translateY(-1px); }
+#fbm-seller-pill.fbm-blocked { background: #2d7d46; }
+
+/* undo toast */
+#fbm-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 20px);
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: #1c1e21;
+  color: #fff;
+  font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+#fbm-toast.fbm-show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+#fbm-toast button {
+  border: none;
+  background: none;
+  color: #6bb3ff;
+  font: 700 13px/1 inherit;
+  cursor: pointer;
+  padding: 2px 4px;
+}

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Marketplace Tidy",
+  "version": "1.0.0",
+  "description": "Hide Facebook Marketplace listings individually or by seller, track seen/unseen, and block keywords. 100% local, no tracking.",
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.facebook.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Marketplace Tidy"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.facebook.com/marketplace/*",
+        "*://*.facebook.com/*/marketplace/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
