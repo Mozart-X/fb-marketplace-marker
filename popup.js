@@ -44,7 +44,8 @@ document.querySelectorAll('#seen button').forEach(b => {
   b.onclick = () => { set({ seenMode: b.dataset.v }); render(); };
 });
 $('keywords').oninput = e => {
-  const list = e.target.value.split('\n').map(s => s.trim().toLowerCase()).filter(Boolean);
+  // accept either commas or newlines as separators
+  const list = e.target.value.split(/[\n,]+/).map(s => s.trim().toLowerCase()).filter(Boolean);
   set({ keywords: list });
 };
 function flash(msg) {

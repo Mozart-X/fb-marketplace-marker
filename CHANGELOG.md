@@ -3,6 +3,14 @@
 All notable changes to Marketplace Tidy are documented here.
 Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [1.1.1] — 2026-11-02
+
+### Fixed
+- Keyword blocking now accepts **commas or new lines** as separators (previously only
+  new lines, so comma-separated words became one keyword that matched nothing).
+- Keyword matching now also checks each listing link's `aria-label`, so listings whose
+  title is only in the image's accessible name are filtered too.
+
 ## [1.1.0] — 2026-11-02
 
 ### Added
@@ -23,5 +31,6 @@ Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 - Popup dashboard with live counts and one-click Clear / Unhide / Reset.
 - 100% local storage; no network calls, no tracking.
 
+[1.1.1]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.1.1
 [1.1.0]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.1.0
 [1.0.0]: https://github.com/Mozart-X/fb-marketplace-marker/releases/tag/v1.0.0

@@ -168,7 +168,14 @@
       }
       injectControls(card, id);
 
-      const st = stateFor(id, card.innerText || '');
+      // Match against visible text plus each listing link's aria-label — some cards
+      // render the title only inside the image's accessible name, not as page text.
+      let text = card.innerText || '';
+      card.querySelectorAll('a[href*="/marketplace/item/"]').forEach(x => {
+        const al = x.getAttribute('aria-label');
+        if (al) text += ' ' + al;
+      });
+      const st = stateFor(id, text);
       card.classList.toggle('fbm-hidden', !!st.hide);
       card.classList.toggle('fbm-dim', !!st.dim);
       setBadge(card, st.badge || null);
